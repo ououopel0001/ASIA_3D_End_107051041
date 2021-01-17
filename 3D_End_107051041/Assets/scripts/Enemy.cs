@@ -47,7 +47,8 @@ public class Enemy : MonoBehaviour
     }
 
     private RaycastHit hit;
-     
+
+    public float hp = 100;
 
     private void Attack()
     {
@@ -71,6 +72,24 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void damage(float Damage)
+    {
+        hp -= Damage;
+        ani.SetTrigger("被打到");
+
+        if (hp <= 0)
+        {
+            dead();
+        }
+    }
+
+    private void dead()
+    {
+        nav.isStopped = true;
+        this.enabled = false;
+        ani.SetBool("死掉惹",true);        
     }
 
     //追蹤
