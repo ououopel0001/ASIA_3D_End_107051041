@@ -26,18 +26,18 @@ public class NPC : MonoBehaviour
     public NPCstate state = NPCstate.First;
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)    //進入
     {
-        if(other.name == "黑人(玩家)")
+        if(other.name == "黑人")
         {
             playerInArea = true;
             StartCoroutine(Dialog());
         }
     }
     
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)    //離開
     {
-        if(other.name == "黑人(玩家)")
+        if(other.name == "黑人")
         {
             playerInArea = false;
             StopDialog();
