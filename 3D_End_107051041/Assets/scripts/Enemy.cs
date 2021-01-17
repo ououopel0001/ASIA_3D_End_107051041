@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     public Transform point;
     [Header("攻擊長度"),Range(0f,5f)]
     public float attacklength;
+    [Header("攻擊力"), Range(0, 500)]
+    public float atk = 30;
 
     private Transform player;
     private NavMeshAgent nav;
@@ -65,7 +67,7 @@ public class Enemy : MonoBehaviour
 
                 if(Physics.Raycast(point.position, point.forward, out hit, attacklength, 1<<8))
                 {
-                    hit.collider.GetComponent<player>().damage();
+                    hit.collider.GetComponent<player>().damage(atk);
                 }
             }
         }
